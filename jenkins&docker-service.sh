@@ -14,12 +14,19 @@ else
 
                 systemctl restart jenkins
 
+                # the below command is sued to save the timestamp in a log file, for our reference
+                echo "[$(date +%y-%m-%d %H:%M:%S)] jenkins service restarted" >> /var/log/service-monitorr.log
+
+
         fi
         if ! systemctl is-active --quiet docker; then
 
                 echo "docker is not active, restarting.... "
 
                 systemctl restart docker
+
+               # the below command is sued to save the timestamp in a log file, for our reference
+                echo "[$(date +%y-%m-%d %H:%M:%S)] docker service restarted" >> /var/log/service-monitorr.log
         fi
 
 
